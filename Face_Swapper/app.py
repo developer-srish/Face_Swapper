@@ -49,6 +49,7 @@ model_path = os.path.join(
 # 1. Start InsightFace
 # -----------------------------------
 app =FaceAnalysis(name="buffalo_l")
+# Module Power is max at 1024,1024 and create deep fake photo We do not suggest to use the max mode
 app.prepare(ctx_id=-1, det_size=(640, 640))  # CPU
 
 # -----------------------------------
@@ -79,6 +80,7 @@ target = target[:, :, ::-1]
 # -----------------------------------
 source_faces = app.get(source)
 target_faces = app.get(target)
+
 
 # Use the first detected face
 source_face = source_faces[0]
