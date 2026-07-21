@@ -1,5 +1,6 @@
 # Models
 from PIL import Image
+import atexit
 import numpy as np
 from insightface.app import FaceAnalysis
 from insightface import model_zoo
@@ -37,6 +38,9 @@ def print(text, style="white", delay=0.05):
         console.print(char, style=style, end="")
         time.sleep(delay)
     console.print()
+@atexit.register
+def exit_handler():
+    print("Thanks For using this programme made by Srish Ghosh",style='bright_green')
 # -----------------------------------
 # Find the model
 # -----------------------------------
