@@ -211,16 +211,20 @@ Face_Swapper/
 ```text
 Face_Swapper/
 │
-├── main.py
-├── README.md
+├── app.py
 ├── requirements.txt
+├── README.md
+├── LICENSE
+│
+├── models/
+│   └── inswapper_128.onnx
 │
 ├── testing_pics/
 │   ├── source.jpg
-│   └── target.jpg
+│   ├── target.jpg
+│   └── .gitkeep
 │
-└── models/
-    └── inswapper_128.onnx
+└── .gitkeep
 ```
 
 ---
@@ -248,7 +252,7 @@ Saved as result.jpg
 
 ---
 
-# 🖼️ Input Images
+# 🖼️ Input Images in the Face_Swapper folder
 
 Place your images inside the project folder.
 
