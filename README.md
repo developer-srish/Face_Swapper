@@ -206,12 +206,13 @@ Face_Swapper/
 ```text
 Face_Swapper/
 │
-├── MAIN.py
-├── source.jpg
-├── target.jpg
-├── result.jpg
+├── main.py
 ├── README.md
 ├── requirements.txt
+│
+├── testing_pics/
+│   ├── source.jpg
+│   └── target.jpg
 │
 └── models/
     └── inswapper_128.onnx
@@ -223,7 +224,7 @@ Face_Swapper/
 Run the application:
 
 ```bash
-python MAIN.py
+python main.py
 ```
 
 If everything is set up correctly, the program will:
