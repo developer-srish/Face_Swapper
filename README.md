@@ -69,17 +69,22 @@ This project is ideal for learning:
 # 📂 Project Structure
 
 ```text
-Realistic-Face-Swap/
+Face_Swapper/
 │
-├── MAIN.py
-├── source.jpg
-├── target.jpg
-├── result.jpg
+├── app.py
 ├── requirements.txt
 ├── README.md
+├── LICENSE
 │
-└── models/
-    └── inswapper_128.onnx
+├── models/
+│   └── .gitkeep
+│
+├── testing_pics/
+│   ├── source.jpg
+│   ├── target.jpg
+│   └── .gitkeep
+│
+└── .gitkeep
 ```
 
 ---
