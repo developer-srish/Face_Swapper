@@ -1,3 +1,5 @@
 insightface
 numpy
 pillow
+pyfiglet
+rich
