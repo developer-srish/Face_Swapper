@@ -171,7 +171,7 @@ pip install -r requirements.txt
 or install manually
 
 ```bash
-pip install insightface onnxruntime pillow numpy
+pip install insightface pillow numpy
 ```
 
 ---
@@ -417,7 +417,6 @@ Add:
 
 ```text
 insightface
-onnxruntime
 numpy
 pillow
 ```
