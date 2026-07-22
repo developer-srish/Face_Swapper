@@ -120,7 +120,7 @@ result = swapper.get(
 # Convert BGR → RGB for Pillow
 result = result[:, :, ::-1]
 # Convert NumPy array to Pillow image
-act=input('Enter your code to remove watermark if you have else press enter')
+act=input('Enter your code to remove watermark if you have else press enter : ')
 if act ==pas:
     Image.fromarray(result).save('result.jpg')
     s_g='Male'if source_faces[0].gender ==1 else 'Female'
