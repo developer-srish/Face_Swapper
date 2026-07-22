@@ -1,4 +1,0 @@
-First unzip the model file
-then from the folder named inswapper_128
-copy the file inswapper_128 to the model folder
-remember to put the photo in the Face_Swapper folder in jpg format only
