@@ -148,7 +148,7 @@ else:
     except:
         font = ImageFont.load_default()
 
-    watermark = "Deepfake"
+    watermark = "Face_Swapper"
 
     # Get text size
     bbox = draw.textbbox((0, 0), watermark, font=font)
