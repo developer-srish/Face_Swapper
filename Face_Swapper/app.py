@@ -11,8 +11,18 @@ from pyfiglet import Figlet
 from rich.console import Console
 from rich.progress import Progress
 import time
+def print(text, style="white", delay=0.05):
+    for char in text:
+        console.print(char, style=style, end="")
+        time.sleep(delay)
+    console.print()
 load_dotenv()
 pas=os.getenv("REMOVE_WATERMARK_PASSWORD")
+if pas is None:
+    print(
+        ".env password missing",
+        style="bright_red"
+    )
 # Mode set
 # -----------------------------------
 # 1. Start InsightFace
@@ -52,11 +62,8 @@ with Progress() as progress:
     while not progress.finished:
         time.sleep(0.05)
         progress.update(task, advance=1)
-def print(text, style="white", delay=0.05):
-    for char in text:
-        console.print(char, style=style, end="")
-        time.sleep(delay)
-    console.print()
+
+
 @atexit.register
 def exit_handler():
     print("Thanks For using this programme made by Srish Ghosh",style='bright_green')
@@ -68,6 +75,12 @@ model_path = os.path.join(
     "models",
     "inswapper_128.onnx"
 )
+if not os.path.exists(model_path):
+    print('Download it from : https://huggingface.co/LPDoctor/insightface/blob/main/inswapper_128.onnx')
+    raise FileNotFoundError(
+        "models/inswapper_128.onnx not found."
+    )
+    
 
 # -----------------------------------
 # 2. Load the face swap model
@@ -97,6 +110,10 @@ target = target[:, :, ::-1]
 # -----------------------------------
 source_faces = app.get(source)
 target_faces = app.get(target)
+if not source_faces:
+    raise Exception('No face in source face')
+if not target_faces:
+    raise Exception('No face in target face')
 
 
 
@@ -120,7 +137,7 @@ result = swapper.get(
 # Convert BGR → RGB for Pillow
 result = result[:, :, ::-1]
 # Convert NumPy array to Pillow image
-act=input('Enter your code to remove watermark if you have else press enter : ')
+act=input('Enter your code to remove watermark if you have else press enter')
 if act ==pas:
     Image.fromarray(result).save('result.jpg')
     s_g='Male'if source_faces[0].gender ==1 else 'Female'
