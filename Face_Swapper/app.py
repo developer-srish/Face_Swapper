@@ -100,19 +100,43 @@ if mo =='/full':
     
 elif mo == '/med':
     app.prepare(ctx_id=0, det_size=(640,640))
+
+
+
 elif mo == '/admin':
-    if not os.path.exists(model_path):
-        print('Download it from : https://huggingface.co/LPDoctor/insightface/blob/main/inswapper_128.onnx')
-        raise FileNotFoundError(
-        "models/inswapper_128.onnx not found."
-    )
-    print(model_path,style='bright_red')
-    print('Version v.1.10',style='bright_magenta')
-    print(f'Pass: {pas}',style='bright_green')
-    
-    
-    
-    
+    keqy=input('Admin Key :')
+    if os.getenv("ADMINKEY") == keqy:
+        if not os.path.exists(model_path):
+            print('Download it from : https://huggingface.co/LPDoctor/insightface/blob/main/inswapper_128.onnx')
+            raise FileNotFoundError(
+            "models/inswapper_128.onnx not found."
+        )
+        print(model_path,style='bright_red')
+        print('Version v.1.10',style='bright_magenta')
+        print(f'Pass: {pas}',style='bright_green')
+        
+        
+        with open("bruteforce_water.py", "a", encoding="utf-8") as f:
+            f.write('''from PIL import Image, PngImagePlugin
+import os
+
+waterma = os.path.join(
+    os.path.dirname(__file__),
+    "watermark.png"
+)
+
+img = Image.open(waterma)
+
+meta = PngImagePlugin.PngInfo()
+meta.add_text("Author", "Srish Ghosh")
+meta.add_text("Software", "Face Swapper")
+meta.add_text("Version", "1.1.0")
+meta.add_text("Watermark", "Official")
+
+img.save(waterma, pnginfo=meta)
+print("Metadata added successfully!") ''')
+        raise SystemExit
+
 @atexit.register
 def exit_handler():
     print("Thanks For using this programme made by Srish Ghosh",style='bright_green')
