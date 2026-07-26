@@ -252,6 +252,235 @@ Saved as result.jpg
 
 ---
 
+# 🐳 Face Swapper - Docker Guide
+
+## Prerequisites
+
+- Docker Desktop installed
+- Windows 10/11
+- WSL 2 enabled
+
+---
+
+# 1. Update WSL (Recommended)
+
+Open **Command Prompt as Administrator** and run:
+
+```cmd
+wsl --update
+```
+
+If required, restart your computer afterwards.
+
+---
+
+# 2. Start Docker Desktop
+
+Wait until Docker Desktop shows:
+
+```
+Engine running
+```
+
+Verify Docker is working:
+
+```cmd
+docker --version
+docker info
+```
+
+---
+
+# 3. Open the Project Folder
+
+```cmd
+cd "C:\Users\Hp\OneDrive\Desktop\v12 docker\Face_Swapper\Face_Swapper"
+```
+
+---
+
+# 4. (Optional) Activate Python Virtual Environment
+
+If you want to run the project **without Docker**.
+
+### If a virtual environment already exists:
+
+```cmd
+venv\Scripts\activate
+```
+
+or
+
+```cmd
+.\venv\Scripts\activate
+```
+
+Your terminal should become:
+
+```
+(venv) C:\Users\...
+```
+
+To deactivate:
+
+```cmd
+deactivate
+```
+
+---
+
+# 5. Build the Docker Image
+
+Run:
+
+```cmd
+docker build --no-cache -t face_swapper .
+```
+
+This creates the Docker image named:
+
+```
+face_swapper
+```
+
+---
+
+# 6. Run the Container
+
+```cmd
+docker run --rm -it -v "%cd%:/app" face_swapper
+```
+
+The application will start and ask:
+
+```
+Model power max at /full and medium at /med chose one to proced :
+```
+
+Choose either:
+
+```
+/full
+```
+
+or
+
+```
+/med
+```
+
+---
+
+# 7. Output
+
+After processing finishes, you'll see something similar to:
+
+```
+✅ Face swap completed!
+Saved as result.jpg
+```
+
+The generated `result.jpg` will be saved inside your project folder.
+
+---
+
+# Useful Docker Commands
+
+## Show running containers
+
+```cmd
+docker ps
+```
+
+## Show all containers
+
+```cmd
+docker ps -a
+```
+
+## Show Docker images
+
+```cmd
+docker images
+```
+
+## Remove Docker image
+
+```cmd
+docker rmi face_swapper
+```
+
+## Rebuild image
+
+```cmd
+docker build --no-cache -t face_swapper .
+```
+
+---
+
+# Troubleshooting
+
+## Docker Engine is not running
+
+Start Docker Desktop.
+
+Then verify:
+
+```cmd
+docker info
+```
+
+---
+
+## Update WSL
+
+```cmd
+wsl --update
+```
+
+Restart Docker Desktop afterwards.
+
+---
+
+## Virtual Environment
+
+Activate:
+
+```cmd
+venv\Scripts\activate
+```
+
+Deactivate:
+
+```cmd
+deactivate
+```
+
+---
+
+## Build Again
+
+```cmd
+docker build --no-cache -t face_swapper .
+```
+
+---
+
+## Run Again
+
+```cmd
+docker run --rm -it -v "%cd%:/app" face_swapper
+```
+
+---
+
+# Notes
+
+- `--rm` automatically removes the container when it exits.
+- `-it` enables interactive input.
+- `-v "%cd%:/app"` mounts your current project folder into the container so input and output files are available on your Windows machine.
+- The first run downloads the InsightFace `buffalo_l` model. Later runs will reuse it if you configure a persistent model cache.
+
 
 
 # 🖼️ Input Images in the Face_Swapper folder
