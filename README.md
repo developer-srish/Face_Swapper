@@ -252,19 +252,7 @@ Saved as result.jpg
 
 ---
 
-## 🐳 Run with Docker
 
-### Build the Docker image
-
-```bash
-docker build -t face_swapper .
-```
-
-### Run the application
-
-```bash
-docker run --rm face_swapper
-```
 
 # 🖼️ Input Images in the Face_Swapper folder
 
